@@ -16,10 +16,9 @@ configuration_inc = include_directories('src')
 pulse = dependency('libpulse')
 cxxopts = dependency('cxxopts')
 
-executable('pamixer', 
+static_library('pamixer', 
   sources : src,
   install : true,
   include_directories : configuration_inc,
   dependencies : [pulse, cxxopts])
 
-install_man('pamixer.1')
