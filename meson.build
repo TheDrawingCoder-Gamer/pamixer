@@ -8,10 +8,6 @@ src = files([
   'src/pulseaudio.cc'
 ])
 
-conf_data = configuration_data()
-conf_data.set_quoted('VERSION', meson.project_version())
-configure_file(output : 'config.hh', configuration : conf_data)
-configuration_inc = include_directories('src')
 
 pulse = dependency('libpulse')
 cxxopts = dependency('cxxopts')
@@ -19,6 +15,5 @@ cxxopts = dependency('cxxopts')
 static_library('pamixer', 
   sources : src,
   install : true,
-  include_directories : configuration_inc,
   dependencies : [pulse, cxxopts])
 

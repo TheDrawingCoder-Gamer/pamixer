@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.hh>
 #include "pulseaudio.hh"
 #include "device.hh"
 
@@ -99,7 +98,6 @@ int main(int argc, char* argv[])
 
     options.add_options()
         ("h,help", "help message")
-        ("v,version", "print version info")
         ("sink", "choose a different sink than the default", cxxopts::value<string>(sink_name))
         ("source", "choose a different source than the default", cxxopts::value<string>(source_name))
         ("default-source", "select the default source")
@@ -130,10 +128,6 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        if (result.count("version")) {
-            cout << VERSION << endl;
-            return 0;
-        }
 
         conflicting_options(result, "set-volume", "increase");
         conflicting_options(result, "set-volume", "decrease");
